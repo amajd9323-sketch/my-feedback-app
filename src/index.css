@@ -1,0 +1,148 @@
+/* App.css - النسخة الاحترافية والمبهجة */
+:root {
+  --primary-color: #4a90e2;
+  --star-gold: #ffc107;
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --card-shadow: 0 20px 40px rgba(0,0,0,0.06);
+}
+
+.main-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-gradient);
+  direction: rtl;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.feedback-card {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 35px;
+  box-shadow: var(--card-shadow);
+  width: 400px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.feedback-card:hover {
+  transform: translateY(-5px);
+}
+
+.floating-star {
+  font-size: 55px;
+  margin-bottom: 15px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-10px) rotate(10deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+.title {
+  color: #2d3436;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.dynamic-subtext {
+  color: var(--primary-color);
+  font-weight: 600;
+  min-height: 24px;
+  margin-bottom: 30px;
+  font-size: 17px;
+}
+
+.stars-row {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.star-unit {
+  font-size: 50px;
+  cursor: pointer;
+  color: #dfe6e9;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.star-unit:hover {
+  transform: scale(1.2);
+}
+
+.star-unit.active {
+  color: var(--star-gold);
+  text-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
+}
+
+.feedback-area {
+  width: 100%;
+  height: 110px;
+  border: 2px solid #f1f2f6;
+  border-radius: 18px;
+  padding: 15px;
+  margin-bottom: 25px;
+  resize: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.feedback-area:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: #f8fbff;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 18px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(74, 144, 226, 0.2);
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #357abd;
+  box-shadow: 0 12px 25px rgba(74, 144, 226, 0.3);
+}
+
+/* واجهة النجاح المبهجة */
+.success-container {
+  padding: 20px;
+}
+
+.success-badge {
+  font-size: 75px;
+  margin-bottom: 20px;
+  display: inline-block;
+  animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+.retry-btn {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 12px;
+  margin-top: 25px;
+  cursor: pointer;
+  color: #777;
+  font-weight: 600;
+}
