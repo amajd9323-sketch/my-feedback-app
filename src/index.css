@@ -5,7 +5,6 @@
   align-items: center;
   background: #f0f4f8;
   direction: rtl;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .feedback-card {
@@ -18,64 +17,20 @@
   text-align: center;
 }
 
-.logo-container {
-  margin-bottom: 10px;
-}
+.logo-container { margin-bottom: 10px; }
 
 .site-logo {
-  width: 120px;
+  width: 130px;
   height: auto;
   border-radius: 12px;
 }
 
-.header-title { 
-  color: #333; 
-  font-size: 1.5rem;
-  margin: 10px 0;
-}
+.header-title { color: #333; font-size: 1.5rem; margin: 10px 0; }
+.dynamic-text { color: #00b8d4; font-weight: 600; margin-bottom: 15px; }
 
-.dynamic-text { 
-  color: #00b8d4; 
-  font-weight: 600; 
-  height: 25px;
-  margin-bottom: 15px;
-}
-
-.stars-row { 
-  font-size: 45px; 
-  margin-bottom: 20px; 
-  display: flex; 
-  justify-content: center; 
-  gap: 8px; 
-}
-
-.star-box { 
-  cursor: pointer; 
-  color: #ddd; 
-  transition: 0.2s; 
-}
-
-.star-box.active { 
-  color: #00e5ff; 
-  transform: scale(1.1); 
-}
-
-.styled-input-small, .styled-input {
-  width: 100%;
-  border: 1.5px solid #eee;
-  border-radius: 10px;
-  padding: 12px;
-  margin-bottom: 15px;
-  box-sizing: border-box;
-  outline: none;
-  font-size: 14px;
-}
-
-.styled-input-small:focus, .styled-input:focus {
-  border-color: #00e5ff;
-}
-
-.styled-input { height: 90px; resize: none; }
+.stars-row { font-size: 45px; margin-bottom: 20px; display: flex; justify-content: center; gap: 8px; }
+.star-box { cursor: pointer; color: #ddd; transition: 0.2s; }
+.star-box.active { color: #00e5ff; transform: scale(1.1); }
 
 .submit-btn {
   width: 100%;
@@ -86,12 +41,4 @@
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
 }
-
-.submit-btn:hover {
-  background: #00e5ff;
-  color: #1a1a1a;
-}
-
-.success-icon { font-size: 50px; margin-bottom: 15px; }

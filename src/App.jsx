@@ -47,6 +47,7 @@ function App() {
         {!submitted ? (
           <>
             <div className="logo-container">
+              {/* المسار المباشر لملف logo.png الموجود في مجلد public */}
               <img src="/logo.png" alt="HEMA.SA" className="site-logo" />
             </div>
 
