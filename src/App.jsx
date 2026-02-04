@@ -45,7 +45,7 @@ function App() {
           <>
             <div className="logo-container">
               {/* إضافة v=1 لضمان تحديث الصورة في المتصفح */}
-              <img src="/logo.png?v=1" alt="HEMA.SA" className="site-logo" />
+              <img src="/logo.png" alt="HEMA.SA" className="site-logo" />
             </div>
 
             <h2 className="header-title">تقييمك يهمنا في HEMA.SA</h2>
