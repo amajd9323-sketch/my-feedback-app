@@ -32,6 +32,15 @@
 .star-box { cursor: pointer; color: #ddd; transition: 0.2s; }
 .star-box.active { color: #00e5ff; transform: scale(1.1); }
 
+.styled-input-small, .styled-input {
+  width: 100%;
+  border: 1.5px solid #eee;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
 .submit-btn {
   width: 100%;
   padding: 14px;

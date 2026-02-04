@@ -35,10 +35,7 @@ function App() {
           colors: ['#00e5ff', '#00b8d4', '#1a1a1a']
         });
       })
-      .catch(() => { 
-        alert("فشل الإرسال، حاول مرة أخرى"); 
-        setLoading(false); 
-      });
+      .catch(() => { alert("فشل الإرسال"); setLoading(false); });
   };
 
   return (
@@ -47,8 +44,8 @@ function App() {
         {!submitted ? (
           <>
             <div className="logo-container">
-              {/* المسار المباشر لملف logo.png الموجود في مجلد public */}
-              <img src="/logo.png" alt="HEMA.SA" className="site-logo" />
+              {/* إضافة v=1 لضمان تحديث الصورة في المتصفح */}
+              <img src="/logo.png?v=1" alt="HEMA.SA" className="site-logo" />
             </div>
 
             <h2 className="header-title">تقييمك يهمنا في HEMA.SA</h2>
