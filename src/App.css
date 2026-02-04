@@ -1,42 +1,103 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* تنسيق الواجهة بالكامل */
+.main-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  direction: rtl;
+  padding: 20px;
+}
+
+/* الكارت الأبيض الأساسي */
+.feedback-card {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px 20px;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* إصلاح تداخل الشعار */
+.logo-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.site-logo {
+  max-width: 120px;
+  height: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* النصوص */
+.header-title {
+  font-size: 20px;
+  color: #333;
+  margin: 10px 0;
 }
 
-.card {
-  padding: 2em;
+.dynamic-text {
+  color: #00e5ff;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: block;
 }
 
-.read-the-docs {
-  color: #888;
+/* تنسيق النجوم */
+.stars-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+  font-size: 35px;
+}
+
+.star-box {
+  cursor: pointer;
+  color: #eee;
+  transition: 0.3s;
+}
+
+.star-box.active {
+  color: #00e5ff;
+}
+
+/* إصلاح شكل الخانات (Inputs) */
+.styled-input-small, 
+.styled-input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  font-family: inherit;
+  box-sizing: border-box; /* يمنع خروج الخانات عن الإطار */
+  text-align: right;
+  display: block;
+}
+
+.styled-input {
+  height: 100px;
+  resize: none;
+}
+
+/* زر الإرسال */
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: #1a1a1a;
+  color: #00e5ff;
+  border: 2px solid #00e5ff;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: #00e5ff;
+  color: #1a1a1a;
 }

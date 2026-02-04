@@ -43,11 +43,9 @@ function App() {
       <div className="feedback-card">
         {!submitted ? (
           <>
-            <div className="logo-container">
-              {/* إضافة v=1 لضمان تحديث الصورة في المتصفح */}
-              <img src="/logo.png" alt="HEMA.SA" className="site-logo" />
-            </div>
-
+           <div className="logo-container">
+  <img src="/logo.png" alt="HEMA.SA" className="site-logo" />
+</div>
             <h2 className="header-title">تقييمك يهمنا في HEMA.SA</h2>
             <p className="dynamic-text">{labels[hover || rating] || "ساعدنا لنكون الأفضل"}</p>
 
