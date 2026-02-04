@@ -3,87 +3,87 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f8fafc;
+  background: #f0f4f8;
   direction: rtl;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .feedback-card {
   background: white;
   padding: 30px;
   border-radius: 25px;
-  box-shadow: 0 20px 40px rgba(0, 229, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 400px;
   text-align: center;
 }
 
 .logo-container {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .site-logo {
-  width: 130px;
+  width: 120px;
   height: auto;
-  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+  border-radius: 12px;
 }
 
 .header-title { 
-  color: #2d3436; 
-  font-size: 1.4rem;
+  color: #333; 
+  font-size: 1.5rem;
   margin: 10px 0;
 }
 
 .dynamic-text { 
   color: #00b8d4; 
   font-weight: 600; 
-  margin-bottom: 20px;
-  height: 24px;
+  height: 25px;
+  margin-bottom: 15px;
 }
 
 .stars-row { 
-  font-size: 40px; 
+  font-size: 45px; 
   margin-bottom: 20px; 
   display: flex; 
   justify-content: center; 
-  gap: 10px; 
+  gap: 8px; 
 }
 
 .star-box { 
   cursor: pointer; 
-  color: #e2e8f0; 
-  transition: 0.3s; 
+  color: #ddd; 
+  transition: 0.2s; 
 }
 
 .star-box.active { 
   color: #00e5ff; 
-  transform: scale(1.2); 
+  transform: scale(1.1); 
 }
 
 .styled-input-small, .styled-input {
   width: 100%;
-  border: 2px solid #f1f5f9;
-  border-radius: 12px;
+  border: 1.5px solid #eee;
+  border-radius: 10px;
   padding: 12px;
   margin-bottom: 15px;
   box-sizing: border-box;
   outline: none;
-  transition: 0.3s;
+  font-size: 14px;
 }
 
 .styled-input-small:focus, .styled-input:focus {
   border-color: #00e5ff;
 }
 
-.styled-input { height: 80px; resize: none; }
+.styled-input { height: 90px; resize: none; }
 
 .submit-btn {
   width: 100%;
-  padding: 15px;
-  background: #1a1a1a; /* لون غامق ليعطي تباين مع الأزرق */
+  padding: 14px;
+  background: #1a1a1a;
   color: #00e5ff;
   border: 2px solid #00e5ff;
-  border-radius: 12px;
+  border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
@@ -94,4 +94,4 @@
   color: #1a1a1a;
 }
 
-.success-icon { font-size: 60px; margin-bottom: 10px; }
+.success-icon { font-size: 50px; margin-bottom: 15px; }

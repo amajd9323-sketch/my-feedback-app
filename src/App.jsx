@@ -24,7 +24,6 @@ function App() {
       user_email: 'amajd9323@gmail.com' 
     };
 
-    // تأكد من صحة الـ IDs الخاصة بك في EmailJS
     emailjs.send('service_daj9zpp', 'template_ej1u947', params, 'ckzhN_erADx_csnor')
       .then(() => { 
         setSubmitted(true); 
@@ -33,10 +32,13 @@ function App() {
           particleCount: 150,
           spread: 70,
           origin: { y: 0.6 },
-          colors: ['#00e5ff', '#00b8d4', '#ffffff'] // ألوان تطابق الشعار
+          colors: ['#00e5ff', '#00b8d4', '#1a1a1a']
         });
       })
-      .catch(() => { alert("فشل الإرسال"); setLoading(false); });
+      .catch(() => { 
+        alert("فشل الإرسال، حاول مرة أخرى"); 
+        setLoading(false); 
+      });
   };
 
   return (
@@ -47,6 +49,7 @@ function App() {
             <div className="logo-container">
               <img src="/logo.png" alt="HEMA.SA" className="site-logo" />
             </div>
+
             <h2 className="header-title">تقييمك يهمنا في HEMA.SA</h2>
             <p className="dynamic-text">{labels[hover || rating] || "ساعدنا لنكون الأفضل"}</p>
 
