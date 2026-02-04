@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import confetti from 'canvas-confetti'; // استيراد مكتبة القصاصات
+import confetti from 'canvas-confetti';
 import './App.css';
 
 function App() {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
-  const [userName, setUserName] = useState(""); // خانة الاسم الجديدة
+  const [userName, setUserName] = useState("");
   const [feedback, setFeedback] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -20,19 +20,20 @@ function App() {
     const params = { 
       rating, 
       message: feedback, 
-      user_name: userName || "عميل مجهول", // إرسال الاسم
+      user_name: userName || "عميل مجهول",
       user_email: 'amajd9323@gmail.com' 
     };
 
+    // تأكد من صحة الـ IDs الخاصة بك في EmailJS
     emailjs.send('service_daj9zpp', 'template_ej1u947', params, 'ckzhN_erADx_csnor')
       .then(() => { 
         setSubmitted(true); 
         setLoading(false);
-        // تشغيل تأثير القصاصات الملونة عند النجاح
         confetti({
           particleCount: 150,
           spread: 70,
-          origin: { y: 0.6 }
+          origin: { y: 0.6 },
+          colors: ['#00e5ff', '#00b8d4', '#ffffff'] // ألوان تطابق الشعار
         });
       })
       .catch(() => { alert("فشل الإرسال"); setLoading(false); });
@@ -43,9 +44,11 @@ function App() {
       <div className="feedback-card">
         {!submitted ? (
           <>
-            <div className="top-icon">⭐</div>
-            <h2 className="header-title">ما هو تقييمك لخدمتنا؟</h2>
-            <p className="dynamic-text">{labels[hover || rating] || "رأيك يساعدنا على التطوير"}</p>
+            <div className="logo-container">
+              <img src="/logo.png" alt="HEMA.SA" className="site-logo" />
+            </div>
+            <h2 className="header-title">تقييمك يهمنا في HEMA.SA</h2>
+            <p className="dynamic-text">{labels[hover || rating] || "ساعدنا لنكون الأفضل"}</p>
 
             <div className="stars-row">
               {[1, 2, 3, 4, 5].map((num) => (
@@ -71,7 +74,7 @@ function App() {
 
             <textarea
               className="styled-input"
-              placeholder="هل لديك ملاحظات إضافية؟"
+              placeholder="رأيك يساعدنا على التطوير..."
               value={feedback}
               onChange={(e) => setFeedback(e.target.value)}
             />
@@ -82,9 +85,9 @@ function App() {
           </>
         ) : (
           <div className="success-state">
-            <div className="success-icon">🎉</div>
+            <div className="success-icon">🎊</div>
             <h2>شكراً لك {userName}!</h2>
-            <p>تم استلام تقييمك بنجاح.</p>
+            <p>تم استلام تقييمك بنجاح في HEMA.SA</p>
           </div>
         )}
       </div>
