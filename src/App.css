@@ -1,4 +1,3 @@
-/* تنسيق الواجهة بالكامل */
 .main-wrapper {
   min-height: 100vh;
   display: flex;
@@ -6,23 +5,21 @@
   align-items: center;
   background-color: #f8f9fa;
   direction: rtl;
-  padding: 20px;
 }
 
-/* الكارت الأبيض الأساسي */
 .feedback-card {
   background: white;
-  width: 100%;
-  max-width: 400px;
-  padding: 30px 20px;
+  width: 90%;
+  max-width: 380px;
+  padding: 30px;
   border-radius: 25px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   text-align: center;
+  box-sizing: border-box;
 }
 
-/* إصلاح تداخل الشعار */
 .logo-container {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   display: flex;
   justify-content: center;
 }
@@ -32,25 +29,22 @@
   height: auto;
 }
 
-/* النصوص */
 .header-title {
   font-size: 20px;
-  color: #333;
   margin: 10px 0;
+  color: #333;
 }
 
 .dynamic-text {
   color: #00e5ff;
   font-weight: bold;
   margin-bottom: 20px;
-  display: block;
 }
 
-/* تنسيق النجوم */
 .stars-row {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 25px;
   font-size: 35px;
 }
@@ -58,46 +52,38 @@
 .star-box {
   cursor: pointer;
   color: #eee;
-  transition: 0.3s;
 }
 
 .star-box.active {
   color: #00e5ff;
 }
 
-/* إصلاح شكل الخانات (Inputs) */
 .styled-input-small, 
 .styled-input {
   width: 100%;
-  padding: 12px 15px;
+  padding: 12px;
   margin-bottom: 15px;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  font-family: inherit;
-  box-sizing: border-box; /* يمنع خروج الخانات عن الإطار */
-  text-align: right;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-sizing: border-box; /* يمنع تمدد الخانات خارج الكارت */
   display: block;
+  font-family: inherit;
 }
 
 .styled-input {
-  height: 100px;
+  height: 90px;
   resize: none;
 }
 
-/* زر الإرسال */
 .submit-btn {
   width: 100%;
-  padding: 15px;
+  padding: 14px;
   background: #1a1a1a;
   color: #00e5ff;
   border: 2px solid #00e5ff;
-  border-radius: 12px;
+  border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.submit-btn:hover {
-  background: #00e5ff;
-  color: #1a1a1a;
+  transform: scale(0.95); /* تأثير الضغط لأسفل */
+  box-shadow: 0 5px 15px rgba(0, 229, 255, 0.4);
 }

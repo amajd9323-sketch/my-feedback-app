@@ -35,7 +35,10 @@ function App() {
           colors: ['#00e5ff', '#00b8d4', '#1a1a1a']
         });
       })
-      .catch(() => { alert("فشل الإرسال"); setLoading(false); });
+      .catch(() => { 
+        alert("فشل الإرسال، حاول مرة أخرى"); 
+        setLoading(false); 
+      });
   };
 
   return (
@@ -43,9 +46,10 @@ function App() {
       <div className="feedback-card">
         {!submitted ? (
           <>
-           <div className="logo-container">
-  <img src="/logo.png" alt="HEMA.SA" className="site-logo" />
-</div>
+            <div className="logo-container">
+              <img src="/logo.png" alt="HEMA.SA" className="site-logo" />
+            </div>
+
             <h2 className="header-title">تقييمك يهمنا في HEMA.SA</h2>
             <p className="dynamic-text">{labels[hover || rating] || "ساعدنا لنكون الأفضل"}</p>
 
