@@ -1,89 +1,101 @@
+/* خلفية متدرجة سينمائية */
 .main-wrapper {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, #f5f7fa 0%, #d6e0f0 100%);
   direction: rtl;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
+/* الكارت بظلال ناعمة */
 .feedback-card {
   background: white;
-  width: 90%;
+  width: 100%;
   max-width: 380px;
-  padding: 30px;
-  border-radius: 25px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  padding: 35px 25px;
+  border-radius: 28px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
   text-align: center;
   box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+/* تأثير عند الوقوف على الكارت */
+.feedback-card:hover {
+  transform: translateY(-5px);
 }
 
 .logo-container {
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: center;
-}
-
-.site-logo {
-  max-width: 120px;
-  height: auto;
-}
-
-.header-title {
-  font-size: 20px;
-  margin: 10px 0;
-  color: #333;
-}
-
-.dynamic-text {
-  color: #00e5ff;
-  font-weight: bold;
   margin-bottom: 20px;
 }
 
+.site-logo {
+  max-width: 110px;
+  height: auto;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+/* النجوم بتأثير النبض */
 .stars-row {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 25px;
-  font-size: 35px;
+  font-size: 38px;
 }
 
 .star-box {
   cursor: pointer;
   color: #eee;
+  transition: all 0.2s ease;
 }
 
 .star-box.active {
   color: #00e5ff;
+  transform: scale(1.1);
+  text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
 }
 
-.styled-input-small, 
-.styled-input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-sizing: border-box; /* يمنع تمدد الخانات خارج الكارت */
-  display: block;
-  font-family: inherit;
-}
-
-.styled-input {
-  height: 90px;
-  resize: none;
-}
-
-.submit-btn {
+/* تحسين الخانات */
+.styled-input-small, .styled-input {
   width: 100%;
   padding: 14px;
+  margin-bottom: 15px;
+  border: 1.5px solid #f0f0f0;
+  border-radius: 12px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.styled-input-small:focus, .styled-input:focus {
+  border-color: #00e5ff;
+  outline: none;
+}
+
+/* زر إرسال بتفاعل كامل */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
   background: #1a1a1a;
   color: #00e5ff;
   border: 2px solid #00e5ff;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
-  transform: scale(0.95); /* تأثير الضغط لأسفل */
-  box-shadow: 0 5px 15px rgba(0, 229, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.15);
+}
+
+.submit-btn:hover {
+  background: #00e5ff;
+  color: #1a1a1a;
+  box-shadow: 0 8px 25px rgba(0, 229, 255, 0.3);
+}
+
+.submit-btn:active {
+  transform: scale(0.95);
 }
