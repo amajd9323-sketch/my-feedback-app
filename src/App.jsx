@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import './App.css';
+// --- استيراد الشعار الخاص بك من المجلد المحلي ---
+import logoImg from './logo.png'; 
 
 function App() {
   const [rating, setRating] = useState(0);
@@ -9,7 +11,14 @@ function App() {
   const form = useRef();
 
   const getEmoji = (val) => {
-    const emojis = { 0: "كيف كانت تجربتك؟", 1: "😠 سيء جداً", 2: "😕 سيء", 3: "🙂 جيد", 4: "😊 رائع", 5: "😍 ممتاز!" };
+    const emojis = { 
+      0: "كيف كانت تجربتك؟", 
+      1: "سيء جداً 😠", 
+      2: "سيء 😕", 
+      3: "جيد 🙂", 
+      4: "رائع! 😊", 
+      5: "ممتاز! 😍" 
+    };
     return emojis[val] || emojis[0];
   };
 
@@ -20,45 +29,57 @@ function App() {
     emailjs.sendForm('service_daj9zpp', 'template_ej1u947', form.current, 'ckzhN_erADx_csnor')
       .then(() => {
         setIsSent(true);
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
       })
       .catch(() => alert('عذراً، حاول مرة أخرى'));
   };
 
   return (
     <div className="main-wrapper">
+      {/* خلفية تقنية متحركة (الجماليات) */}
+      <div className="bg-pattern"></div>
+      
       <div className="feedback-card">
-        {/* رابط مباشر للشعار لضمان الظهور */}
-        <img src="https://i.ibb.co/Vp8pXpL/logo.jpg" alt="HEMA.SA" className="main-logo" />
+        <div className="logo-container">
+          <img src={logoImg} alt="HEMA.SA" className="main-logo" />
+        </div>
 
         {!isSent ? (
-          <form ref={form} onSubmit={sendEmail}>
+          <form ref={form} onSubmit={sendEmail} className="fade-in">
             <div className="reaction-text">{getEmoji(hover || rating)}</div>
             
-            <div style={{marginBottom: '25px'}}>
+            <div className="stars-row">
               {[1, 2, 3, 4, 5].map((s) => (
-                <span key={s} className={`star-unit ${s <= (hover || rating) ? 'active' : ''}`}
-                  onClick={() => setRating(s)} onMouseEnter={() => setHover(s)} onMouseLeave={() => setHover(0)}>★</span>
+                <span key={s} 
+                  className={`star-item ${s <= (hover || rating) ? 'active' : ''}`}
+                  onClick={() => setRating(s)} 
+                  onMouseEnter={() => setHover(s)} 
+                  onMouseLeave={() => setHover(0)}>
+                  ★
+                </span>
               ))}
             </div>
 
             <input type="hidden" name="rating" value={rating} />
-            <input type="text" name="from_name" placeholder="الاسم (اختياري)" className="premium-input" />
-            <textarea name="message" placeholder="ملاحظاتك الإضافية (اختياري)..." className="premium-input" rows="3"></textarea>
+            <div className="inputs-wrapper">
+              <input type="text" name="from_name" placeholder="الاسم (اختياري)" className="tech-input" />
+              <textarea name="message" placeholder="ملاحظاتك الإضافية..." className="tech-input" rows="3"></textarea>
+            </div>
             
-            <button type="submit" className="submit-btn">إرسال التقييم الآن</button>
+            <button type="submit" className="glow-btn">إرسال التقييم الآن</button>
           </form>
         ) : (
-          <div style={{padding: '30px 0'}}>
-            <h1 style={{fontSize: '60px'}}>✨</h1>
-            <h2 style={{color: '#0f172a'}}>شكراً لثقتك!</h2>
-            <p style={{color: '#64748b'}}>رأيك يساعدنا لنكون الأفضل دائماً.</p>
-            <button onClick={() => setIsSent(false)} style={{background:'none', border:'none', color:'#00d2ff', cursor:'pointer', textDecoration:'underline', marginTop: '15px'}}>إرسال مرة أخرى</button>
+          <div className="success-msg bounce-in">
+            <div className="success-icon">✨</div>
+            <h2>تم الإرسال بنجاح!</h2>
+            <p>شكراً لك، رأيك يساعد HEMA.SA على التطور.</p>
+            <button onClick={() => setIsSent(false)} className="reset-btn">إرسال تقييم جديد</button>
           </div>
         )}
 
-        <div className="wa-container">
-          <a href="https://wa.me/972595972039" target="_blank" rel="noreferrer" className="big-wa-button">
+        <div className="wa-footer">
+          <p className="wa-help-text">هل تحتاج مساعدة فورية؟</p>
+          <a href="https://wa.me/972595972039" target="_blank" rel="noreferrer" className="massive-wa-btn">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="wa" />
             <span>تواصل معنا عبر واتساب</span>
           </a>
@@ -67,4 +88,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
