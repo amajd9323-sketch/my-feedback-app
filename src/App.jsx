@@ -5,12 +5,13 @@ import './App.css';
 function App() {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
-  const [isSent, setIsSent] = useState(false); // حالة جديدة لمعرفة هل تم الإرسال بنجاح
+  const [isSent, setIsSent] = useState(false);
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
 
+    // التقييم بالنجوم هو الوحيد الإلزامي لضمان جودة البيانات
     if (rating === 0) {
       alert("يرجى اختيار تقييم بالنجوم أولاً");
       return;
@@ -22,7 +23,7 @@ function App() {
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
       .then(() => {
-          setIsSent(true); // إخفاء النموذج وإظهار رسالة الشكر
+          setIsSent(true);
           setRating(0);
           e.target.reset();
       }, (error) => {
@@ -35,25 +36,21 @@ function App() {
     <div className="main-wrapper">
       <div className="feedback-card">
         
-        {/* الشعار العلوي */}
-        <div style={{ marginBottom: '15px', position: 'relative', zIndex: 2 }}>
+        {/* شعار المتجر العلوي */}
+        <div className="logo-section">
           <img 
             src="https://hema-sa.com/logo.png" 
             alt="HEMA.SA" 
-            style={{ width: '100px', height: 'auto' }}
+            className="main-logo"
             onError={(e) => { e.target.src = "https://via.placeholder.com/100x50?text=HEMA.SA" }}
           />
         </div>
 
         {!isSent ? (
-          // --- الجزء الأول: استمارة التقييم (تختفي بعد الإرسال) ---
-          <>
-            <h2 style={{ fontSize: '18px', margin: '5px 0', position: 'relative', zIndex: 2 }}>
-              تقييمك يهمنا في HEMA.SA
-            </h2>
-            <p style={{ color: '#64748b', fontSize: '13px', marginBottom: '20px', position: 'relative', zIndex: 2 }}>
-              رأيك يساعدنا لنكون الأفضل دائماً
-            </p>
+          /* واجهة إدخال التقييم */
+          <div className="form-container">
+            <h2 className="main-title">تقييمك يهمنا في HEMA.SA</h2>
+            <p className="sub-title">رأيك يساعدنا لنكون الأفضل دائماً</p>
 
             <form ref={form} onSubmit={sendEmail}>
               <div className="stars-row">
@@ -70,32 +67,30 @@ function App() {
                 ))}
               </div>
               
+              {/* حقول اختيارية تماماً (لا يوجد required) */}
               <input type="hidden" name="rating" value={rating} />
-              <input type="text" name="from_name" placeholder="اكتب اسمك (اختياري)" className="styled-input" required />
-              <textarea name="message" placeholder="رأيك يساعدنا على التطوير..." className="styled-input" rows="3" required></textarea>
+              <input type="text" name="from_name" placeholder="الاسم (اختياري)" className="styled-input" />
+              <textarea name="message" placeholder="رأيك (اختياري)..." className="styled-input" rows="3"></textarea>
               
               <button type="submit" className="submit-btn">إرسال التقييم</button>
             </form>
-          </>
+          </div>
         ) : (
-          // --- الجزء الثاني: رسالة الشكر التفاعلية (تظهر بعد الإرسال) ---
-          <div style={{ padding: '40px 0', animation: 'fadeIn 0.5s ease' }}>
-            <div style={{ fontSize: '60px', color: '#16a34a', marginBottom: '20px' }}>✓</div>
-            <h2 style={{ fontSize: '22px', marginBottom: '10px' }}>شكراً لك!</h2>
-            <p style={{ color: '#64748b' }}>تم إرسال تقييمك بنجاح إلى الإدارة.</p>
-            <button 
-              onClick={() => setIsSent(false)} 
-              style={{ marginTop: '20px', background: 'none', border: 'none', color: '#4facfe', cursor: 'pointer', textDecoration: 'underline' }}
-            >
+          /* واجهة رسالة الشكر التفاعلية */
+          <div className="success-screen">
+            <div className="check-mark">✓</div>
+            <h2 className="success-title">شكراً لك!</h2>
+            <p className="success-text">تم استلام تقييمك بنجاح ونحن نقدر وقتك.</p>
+            <button onClick={() => setIsSent(false)} className="re-send-btn">
               إرسال تقييم آخر
             </button>
           </div>
         )}
 
-        <a href="https://wa.me/972595972039" target="_blank" rel="noreferrer" className="whatsapp-btn-link">
+        {/* رابط الواتساب الثابت */}
+        <a href="https://wa.me/972595972039" target="_blank" rel="noreferrer" className="whatsapp-footer">
           <img 
             src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-            className="whatsapp-icon-small" 
             alt="wa" 
           />
           <span>تواصل معنا مباشرة</span>

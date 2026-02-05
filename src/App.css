@@ -1,116 +1,96 @@
-/* التدرج السماوي للموقع بالكامل */
+/* الخلفية الأساسية */
 .main-wrapper {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #22e1ff 0%, #1d8cf8 100%); 
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
   direction: rtl;
   padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* الكرت الأبيض الشفاف */
+/* الكرت الزجاجي الشفاف */
 .feedback-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   width: 95%;
   max-width: 420px;
   padding: 40px 30px;
   border-radius: 40px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
   overflow: hidden;
+  color: white;
 }
 
-/* الشعار المائي HEMA.SA في الخلفية */
+/* العناوين */
+.main-title { font-size: 20px; margin: 10px 0; }
+.sub-title { font-size: 14px; color: rgba(255, 255, 255, 0.8); margin-bottom: 25px; }
+
+/* النجوم */
+.star-box { 
+  font-size: 40px; 
+  cursor: pointer; 
+  color: rgba(255, 255, 255, 0.3); 
+  transition: 0.3s; 
+  margin: 0 5px; 
+}
+.star-box.active { color: white; text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
+
+/* المدخلات الشفافة */
+.styled-input {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+  font-size: 14px;
+}
+.styled-input::placeholder { color: rgba(255, 255, 255, 0.6); }
+
+/* زر الإرسال */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: #0f172a;
+  color: #00f2fe;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+.submit-btn:hover { transform: scale(1.02); background: #1e293b; }
+
+/* رسالة النجاح */
+.check-mark { font-size: 70px; color: #fff; margin-bottom: 15px; }
+.re-send-btn { 
+  background: none; border: none; color: white; 
+  text-decoration: underline; cursor: pointer; margin-top: 20px; 
+}
+
+/* الواتساب */
+.whatsapp-footer {
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 30px; color: white; text-decoration: none; font-size: 14px;
+}
+.whatsapp-footer img { width: 22px; margin-left: 10px; }
+
+/* الشعار المائي الخلفي */
 .feedback-card::before {
   content: "HEMA.SA";
   position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 80px;
-  font-weight: 900;
-  color: rgba(0, 0, 0, 0.03); /* شفافية عالية جداً ليكون مائياً */
-  z-index: 0;
-  pointer-events: none;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-size: 80px; font-weight: 900;
+  color: rgba(255, 255, 255, 0.05);
+  z-index: -1;
   white-space: nowrap;
-}
-
-/* تنسيق النجوم */
-.stars-row {
-  position: relative;
-  z-index: 1;
-}
-
-.star-box { 
-  font-size: 38px; 
-  cursor: pointer; 
-  color: #e0e0e0; 
-  transition: 0.3s; 
-  margin: 0 4px; 
-}
-
-.star-box.active { 
-  color: #00d2ff; 
-  text-shadow: 0 0 10px rgba(0, 210, 255, 0.3); 
-}
-
-/* المدخلات */
-.styled-input {
-  width: 100%; 
-  padding: 14px; 
-  margin: 12px 0;
-  border: 1px solid rgba(0,0,0,0.08); 
-  border-radius: 15px;
-  background: white; 
-  font-size: 14px; 
-  outline: none;
-  position: relative;
-  z-index: 1;
-}
-
-/* الزر الأسود الأنيق */
-.submit-btn {
-  width: 100%; 
-  padding: 16px; 
-  background: #0f172a; 
-  color: #00d2ff;
-  border: none; 
-  border-radius: 15px; 
-  font-weight: bold; 
-  cursor: pointer;
-  margin-top: 10px; 
-  transition: 0.3s;
-  position: relative;
-  z-index: 1;
-}
-
-.submit-btn:hover {
-  background: #1e293b;
-}
-
-/* أيقونة الواتساب */
-.whatsapp-icon-small { 
-  width: 20px; 
-  height: 20px; 
-  margin-left: 8px; 
-}
-
-.whatsapp-btn-link { 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  color: #16a34a; 
-  text-decoration: none; 
-  font-size: 14px; 
-  margin-top: 25px;
-  position: relative;
-  z-index: 1;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
