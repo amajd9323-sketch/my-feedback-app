@@ -8,13 +8,12 @@ function App() {
   return (
     <div className="main-wrapper">
       <div className="feedback-card">
-        
-        {/* الشعار العلوي - استخدمت لك رابط الصورة المباشر لضمان الظهور */}
+        {/* الشعار العلوي - تم تحديث الرابط لضمان الظهور */}
         <div style={{ marginBottom: '15px', position: 'relative', zIndex: 2 }}>
           <img 
             src="https://hema-sa.com/logo.png" 
             alt="HEMA.SA" 
-            style={{ width: '100px', height: 'auto', borderRadius: '10px' }}
+            style={{ width: '100px', height: 'auto' }}
             onError={(e) => { e.target.src = "https://via.placeholder.com/100x50?text=HEMA.SA" }}
           />
         </div>
@@ -23,45 +22,27 @@ function App() {
           تقييمك يهمنا في HEMA.SA
         </h2>
         <p style={{ color: '#64748b', fontSize: '13px', marginBottom: '20px', position: 'relative', zIndex: 2 }}>
-          ساعدنا لنكون أفضل دائماً
+          رأيك يساعدنا لنكون الأفضل دائماً
         </p>
 
-        {/* النجوم */}
         <div className="stars-row">
           {[1, 2, 3, 4, 5].map((star) => (
-            <span 
-              key={star} 
-              className={`star-box ${star <= (hover || rating) ? 'active' : ''}`}
-              onClick={() => setRating(star)}
-              onMouseEnter={() => setHover(star)}
-              onMouseLeave={() => setHover(0)}
-            >
-              ★
-            </span>
+            <span key={star} className={`star-box ${star <= (hover || rating) ? 'active' : ''}`}
+              onClick={() => setRating(star)} onMouseEnter={() => setHover(star)} onMouseLeave={() => setHover(0)}>★</span>
           ))}
         </div>
 
-        {/* المدخلات */}
         <input type="text" placeholder="اكتب اسمك (اختياري)" className="styled-input" />
         <textarea placeholder="رأيك يساعدنا على التطوير..." className="styled-input" rows="3"></textarea>
         
-        <button className="submit-btn" onClick={() => alert('شكراً لتقييمك!')}>
-          إرسال التقييم
-        </button>
+        <button className="submit-btn" onClick={() => alert('شكراً لتقييمك!')}>إرسال التقييم</button>
 
-        {/* رابط الواتساب السفلي */}
         <a href="https://wa.me/972595972039" target="_blank" rel="noreferrer" className="whatsapp-btn-link">
-          <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-            className="whatsapp-icon-small" 
-            alt="wa" 
-          />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" className="whatsapp-icon-small" alt="wa" />
           <span>هل تواجه مشكلة؟ تواصل معنا</span>
         </a>
-
       </div>
     </div>
   );
 }
-
 export default App;
