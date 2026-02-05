@@ -1,101 +1,112 @@
-/* خلفية متدرجة سينمائية */
+/* التدرج السماوي للموقع بالكامل */
 .main-wrapper {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #f5f7fa 0%, #d6e0f0 100%);
+  background: linear-gradient(135deg, #22e1ff 0%, #1d8cf8 100%); 
   direction: rtl;
   padding: 20px;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* الكارت بظلال ناعمة */
+/* الكرت الأبيض الشفاف */
 .feedback-card {
-  background: white;
-  width: 100%;
-  max-width: 380px;
-  padding: 35px 25px;
-  border-radius: 28px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  width: 95%;
+  max-width: 420px;
+  padding: 40px 30px;
+  border-radius: 40px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
   text-align: center;
-  box-sizing: border-box;
-  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-/* تأثير عند الوقوف على الكارت */
-.feedback-card:hover {
-  transform: translateY(-5px);
+/* الشعار المائي HEMA.SA في الخلفية */
+.feedback-card::before {
+  content: "HEMA.SA";
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.03); /* شفافية عالية جداً ليكون مائياً */
+  z-index: 0;
+  pointer-events: none;
+  white-space: nowrap;
 }
 
-.logo-container {
-  margin-bottom: 20px;
-}
-
-.site-logo {
-  max-width: 110px;
-  height: auto;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-}
-
-/* النجوم بتأثير النبض */
+/* تنسيق النجوم */
 .stars-row {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 25px;
-  font-size: 38px;
+  position: relative;
+  z-index: 1;
 }
 
-.star-box {
-  cursor: pointer;
-  color: #eee;
-  transition: all 0.2s ease;
+.star-box { 
+  font-size: 38px; 
+  cursor: pointer; 
+  color: #e0e0e0; 
+  transition: 0.3s; 
+  margin: 0 4px; 
 }
 
-.star-box.active {
-  color: #00e5ff;
-  transform: scale(1.1);
-  text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+.star-box.active { 
+  color: #00d2ff; 
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.3); 
 }
 
-/* تحسين الخانات */
-.styled-input-small, .styled-input {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 15px;
-  border: 1.5px solid #f0f0f0;
-  border-radius: 12px;
-  box-sizing: border-box;
-  font-size: 14px;
-  transition: border-color 0.3s;
-}
-
-.styled-input-small:focus, .styled-input:focus {
-  border-color: #00e5ff;
+/* المدخلات */
+.styled-input {
+  width: 100%; 
+  padding: 14px; 
+  margin: 12px 0;
+  border: 1px solid rgba(0,0,0,0.08); 
+  border-radius: 15px;
+  background: white; 
+  font-size: 14px; 
   outline: none;
+  position: relative;
+  z-index: 1;
 }
 
-/* زر إرسال بتفاعل كامل */
+/* الزر الأسود الأنيق */
 .submit-btn {
-  width: 100%;
-  padding: 16px;
-  background: #1a1a1a;
-  color: #00e5ff;
-  border: 2px solid #00e5ff;
-  border-radius: 12px;
-  font-weight: bold;
+  width: 100%; 
+  padding: 16px; 
+  background: #0f172a; 
+  color: #00d2ff;
+  border: none; 
+  border-radius: 15px; 
+  font-weight: bold; 
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.15);
+  margin-top: 10px; 
+  transition: 0.3s;
+  position: relative;
+  z-index: 1;
 }
 
 .submit-btn:hover {
-  background: #00e5ff;
-  color: #1a1a1a;
-  box-shadow: 0 8px 25px rgba(0, 229, 255, 0.3);
+  background: #1e293b;
 }
 
-.submit-btn:active {
-  transform: scale(0.95);
+/* أيقونة الواتساب */
+.whatsapp-icon-small { 
+  width: 20px; 
+  height: 20px; 
+  margin-left: 8px; 
+}
+
+.whatsapp-btn-link { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  color: #16a34a; 
+  text-decoration: none; 
+  font-size: 14px; 
+  margin-top: 25px;
+  position: relative;
+  z-index: 1;
 }

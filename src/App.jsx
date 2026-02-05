@@ -1,98 +1,64 @@
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
-import confetti from 'canvas-confetti';
 import './App.css';
 
 function App() {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
-  const [userName, setUserName] = useState("");
-  const [feedback, setFeedback] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const labels = ["", "سيء جداً 😞", "مقبول 😐", "جيد 🙂", "رائع جداً 😊", "ممتاز! 😍"];
-
-  const handleSendFeedback = () => {
-    if (rating === 0) return alert("من فضلك اختر النجوم أولاً!");
-    setLoading(true);
-
-    const params = { 
-      rating, 
-      message: feedback, 
-      user_name: userName || "عميل مجهول",
-      user_email: 'amajd9323@gmail.com' 
-    };
-
-    emailjs.send('service_daj9zpp', 'template_ej1u947', params, 'ckzhN_erADx_csnor')
-      .then(() => { 
-        setSubmitted(true); 
-        setLoading(false);
-        confetti({
-          particleCount: 150,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ['#00e5ff', '#00b8d4', '#1a1a1a']
-        });
-      })
-      .catch(() => { 
-        alert("فشل الإرسال، حاول مرة أخرى"); 
-        setLoading(false); 
-      });
-  };
 
   return (
     <div className="main-wrapper">
       <div className="feedback-card">
-        {!submitted ? (
-          <>
-            <div className="logo-container">
-              <img src="/logo.png" alt="HEMA.SA" className="site-logo" />
-            </div>
+        
+        {/* الشعار العلوي - تأكد أن الصورة موجودة في مجلد public باسم logo.png */}
+        <div style={{ marginBottom: '15px' }}>
+          <img 
+            src="/logo.png" 
+            alt="HEMA.SA" 
+            style={{ width: '90px', height: 'auto' }}
+            onError={(e) => { e.target.src = "https://via.placeholder.com/90x40?text=HEMA.SA" }}
+          />
+        </div>
+        
+        <h2 style={{ fontSize: '18px', margin: '5px 0', position: 'relative', z-index: 1 }}>
+          تقييمك يهمنا في HEMA.SA
+        </h2>
+        <p style={{ color: '#64748b', fontSize: '13px', marginBottom: '20px', position: 'relative', z-index: 1 }}>
+          ساعدنا لنكون أفضل دائماً
+        </p>
 
-            <h2 className="header-title">تقييمك يهمنا في HEMA.SA</h2>
-            <p className="dynamic-text">{labels[hover || rating] || "ساعدنا لنكون الأفضل"}</p>
+        {/* النجوم */}
+        <div className="stars-row">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <span 
+              key={star} 
+              className={`star-box ${star <= (hover || rating) ? 'active' : ''}`}
+              onClick={() => setRating(star)}
+              onMouseEnter={() => setHover(star)}
+              onMouseLeave={() => setHover(0)}
+            >
+              ★
+            </span>
+          ))}
+        </div>
 
-            <div className="stars-row">
-              {[1, 2, 3, 4, 5].map((num) => (
-                <span
-                  key={num}
-                  className={`star-box ${num <= (hover || rating) ? 'active' : ''}`}
-                  onClick={() => setRating(num)}
-                  onMouseEnter={() => setHover(num)}
-                  onMouseLeave={() => setHover(0)}
-                >
-                  ★
-                </span>
-              ))}
-            </div>
+        {/* المدخلات */}
+        <input type="text" placeholder="اكتب اسمك (اختياري)" className="styled-input" />
+        <textarea placeholder="رأيك يساعدنا على التطوير..." className="styled-input" rows="3"></textarea>
+        
+        <button className="submit-btn" onClick={() => alert('شكراً لتقييمك!')}>
+          إرسال التقييم
+        </button>
 
-            <input 
-              type="text" 
-              className="styled-input-small" 
-              placeholder="اكتب اسمك (اختياري)" 
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-            />
+        {/* رابط الواتساب السفلي */}
+        <a href="https://wa.me/972595972039" target="_blank" rel="noreferrer" className="whatsapp-btn-link">
+          <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+            className="whatsapp-icon-small" 
+            alt="wa" 
+          />
+          <span>هل تواجه مشكلة؟ تواصل معنا</span>
+        </a>
 
-            <textarea
-              className="styled-input"
-              placeholder="رأيك يساعدنا على التطوير..."
-              value={feedback}
-              onChange={(e) => setFeedback(e.target.value)}
-            />
-
-            <button className="submit-btn" onClick={handleSendFeedback} disabled={loading}>
-              {loading ? "جاري الإرسال..." : "إرسال التقييم"}
-            </button>
-          </>
-        ) : (
-          <div className="success-state">
-            <div className="success-icon">🎊</div>
-            <h2>شكراً لك {userName}!</h2>
-            <p>تم استلام تقييمك بنجاح في HEMA.SA</p>
-          </div>
-        )}
       </div>
     </div>
   );
