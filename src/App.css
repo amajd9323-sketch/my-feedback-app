@@ -1,96 +1,58 @@
-/* الخلفية الأساسية */
 .main-wrapper {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  background: linear-gradient(135deg, #22e1ff 0%, #1d8cf8 100%);
   direction: rtl;
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* الكرت الزجاجي الشفاف */
 .feedback-card {
-  background: rgba(255, 255, 255, 0.2); 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: #ffffff; /* أبيض صريح وواضح */
   width: 95%;
   max-width: 420px;
   padding: 40px 30px;
-  border-radius: 40px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   text-align: center;
   position: relative;
-  overflow: hidden;
-  color: white;
 }
 
-/* العناوين */
-.main-title { font-size: 20px; margin: 10px 0; }
-.sub-title { font-size: 14px; color: rgba(255, 255, 255, 0.8); margin-bottom: 25px; }
+.main-title { color: #1e293b; font-size: 22px; font-weight: bold; margin-bottom: 8px; }
+.sub-title { color: #64748b; font-size: 14px; margin-bottom: 25px; }
 
-/* النجوم */
-.star-box { 
-  font-size: 40px; 
-  cursor: pointer; 
-  color: rgba(255, 255, 255, 0.3); 
-  transition: 0.3s; 
-  margin: 0 5px; 
-}
-.star-box.active { color: white; text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
+.star-box { font-size: 40px; cursor: pointer; color: #e2e8f0; transition: 0.3s; margin: 0 5px; }
+.star-box.active { color: #f59e0b; } /* نجوم ذهبية واضحة */
 
-/* المدخلات الشفافة */
 .styled-input {
   width: 100%;
-  padding: 14px;
-  margin: 12px 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  padding: 15px;
+  margin: 10px 0;
+  border: 2px solid #f1f5f9;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #1e293b;
   outline: none;
-  font-size: 14px;
+  font-size: 15px;
 }
-.styled-input::placeholder { color: rgba(255, 255, 255, 0.6); }
 
-/* زر الإرسال */
 .submit-btn {
   width: 100%;
   padding: 16px;
-  background: #0f172a;
-  color: #00f2fe;
+  background: #0f172a; /* أسود كحلي فخم */
+  color: #ffffff;
   border: none;
-  border-radius: 15px;
+  border-radius: 12px;
   font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
   margin-top: 15px;
-  transition: 0.3s;
-}
-.submit-btn:hover { transform: scale(1.02); background: #1e293b; }
-
-/* رسالة النجاح */
-.check-mark { font-size: 70px; color: #fff; margin-bottom: 15px; }
-.re-send-btn { 
-  background: none; border: none; color: white; 
-  text-decoration: underline; cursor: pointer; margin-top: 20px; 
 }
 
-/* الواتساب */
-.whatsapp-footer {
+.whatsapp-link {
   display: flex; align-items: center; justify-content: center;
-  margin-top: 30px; color: white; text-decoration: none; font-size: 14px;
+  margin-top: 25px; color: #16a34a; text-decoration: none; font-weight: 500;
 }
-.whatsapp-footer img { width: 22px; margin-left: 10px; }
-
-/* الشعار المائي الخلفي */
-.feedback-card::before {
-  content: "HEMA.SA";
-  position: absolute;
-  top: 50%; left: 50%; transform: translate(-50%, -50%);
-  font-size: 80px; font-weight: 900;
-  color: rgba(255, 255, 255, 0.05);
-  z-index: -1;
-  white-space: nowrap;
-}
+.whatsapp-link img { width: 22px; margin-left: 8px; }
