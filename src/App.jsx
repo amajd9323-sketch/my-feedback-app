@@ -8,94 +8,79 @@ function App() {
   const [isSent, setIsSent] = useState(false);
   const form = useRef();
 
+  // ميزة التفاعلات الجديدة
+  const getReaction = (val) => {
+    const reactions = {
+      0: "كيف كانت تجربتك؟",
+      1: "سيء جداً 😠",
+      2: "سيء 😕",
+      3: "جيد نوعاً ما 🙂",
+      4: "رائع! 😊",
+      5: "ممتاز، أحببت ذلك! 😍"
+    };
+    return reactions[val] || reactions[0];
+  };
+
   const sendEmail = (e) => {
     e.preventDefault();
+    if (rating === 0) { alert("من فضلك اختر النجوم أولاً"); return; }
 
-    // التقييم بالنجوم هو الوحيد الإلزامي لضمان جودة البيانات
-    if (rating === 0) {
-      alert("يرجى اختيار تقييم بالنجوم أولاً");
-      return;
-    }
-
-    const SERVICE_ID = "service_daj9zpp";
-    const TEMPLATE_ID = "template_ej1u947";
-    const PUBLIC_KEY = "ckzhN_erADx_csnor";
-
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
-      .then(() => {
-          setIsSent(true);
-          setRating(0);
-          e.target.reset();
-      }, (error) => {
-          alert('عذراً، حدث خطأ أثناء الإرسال.');
-          console.log('FAILED...', error.text);
-      });
+    emailjs.sendForm('service_daj9zpp', 'template_ej1u947', form.current, 'ckzhN_erADx_csnor')
+      .then(() => setIsSent(true))
+      .catch(() => alert('عذراً، حاول مرة أخرى'));
   };
 
   return (
     <div className="main-wrapper">
       <div className="feedback-card">
-        
-        {/* شعار المتجر العلوي */}
-        <div className="logo-section">
-          <img 
-            src="https://hema-sa.com/logo.png" 
-            alt="HEMA.SA" 
-            className="main-logo"
-            onError={(e) => { e.target.src = "https://via.placeholder.com/100x50?text=HEMA.SA" }}
-          />
+        <div className="header-section">
+           <img src="https://hema-sa.com/logo.png" alt="HEMA.SA" className="main-logo" />
         </div>
 
         {!isSent ? (
-          /* واجهة إدخال التقييم */
-          <div className="form-container">
-            <h2 className="main-title">تقييمك يهمنا في HEMA.SA</h2>
-            <p className="sub-title">رأيك يساعدنا لنكون الأفضل دائماً</p>
+          <form ref={form} onSubmit={sendEmail} className="fade-in">
+            <h2 className="main-title">رأيك يهمنا</h2>
+            
+            {/* عرض التفاعل فوق النجوم */}
+            <div className="reaction-text">{getReaction(hover || rating)}</div>
+            
+            <div className="stars-container">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <span key={s} 
+                  className={`star-node ${s <= (hover || rating) ? 'active' : ''}`}
+                  onClick={() => setRating(s)} 
+                  onMouseEnter={() => setHover(s)} 
+                  onMouseLeave={() => setHover(0)}>
+                  ★
+                </span>
+              ))}
+            </div>
 
-            <form ref={form} onSubmit={sendEmail}>
-              <div className="stars-row">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span 
-                    key={star} 
-                    className={`star-box ${star <= (hover || rating) ? 'active' : ''}`}
-                    onClick={() => setRating(star)}
-                    onMouseEnter={() => setHover(star)}
-                    onMouseLeave={() => setHover(0)}
-                  >
-                    ★
-                  </span>
-                ))}
-              </div>
-              
-              {/* حقول اختيارية تماماً (لا يوجد required) */}
-              <input type="hidden" name="rating" value={rating} />
-              <input type="text" name="from_name" placeholder="الاسم (اختياري)" className="styled-input" />
-              <textarea name="message" placeholder="رأيك (اختياري)..." className="styled-input" rows="3"></textarea>
-              
-              <button type="submit" className="submit-btn">إرسال التقييم</button>
-            </form>
-          </div>
+            <input type="hidden" name="rating" value={rating} />
+            <div className="inputs-group">
+               <input type="text" name="from_name" placeholder="الاسم (اختياري)" className="premium-input" />
+               <textarea name="message" placeholder="ما الذي يمكننا تحسينه؟ (اختياري)" className="premium-input" rows="3"></textarea>
+            </div>
+            
+            <button type="submit" className="glow-submit-btn">إرسال التقييم الآن</button>
+          </form>
         ) : (
-          /* واجهة رسالة الشكر التفاعلية */
-          <div className="success-screen">
-            <div className="check-mark">✓</div>
-            <h2 className="success-title">شكراً لك!</h2>
-            <p className="success-text">تم استلام تقييمك بنجاح ونحن نقدر وقتك.</p>
-            <button onClick={() => setIsSent(false)} className="re-send-btn">
-              إرسال تقييم آخر
-            </button>
+          <div className="success-container bounce-in">
+            <div className="success-icon">✨</div>
+            <h2>شكراً لثقتك!</h2>
+            <p>كلماتك تسعدنا وتساعدنا على التطور.</p>
+            <button onClick={() => setIsSent(false)} className="retry-btn">إرسال تقييم آخر</button>
           </div>
         )}
 
-        {/* رابط الواتساب الثابت */}
-        <a href="https://wa.me/972595972039" target="_blank" rel="noreferrer" className="whatsapp-footer">
-          <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-            alt="wa" 
-          />
-          <span>تواصل معنا مباشرة</span>
-        </a>
-
+        {/* زر الواتساب الضخم والجديد */}
+        <div className="whatsapp-section">
+            <p className="wa-text">هل لديك استفسار سريع؟</p>
+            <a href="https://wa.me/972595972039" target="_blank" rel="noreferrer" className="big-wa-btn">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="wa" />
+              تحدث معنا عبر واتساب
+            </a>
+        </div>
       </div>
     </div>
   );
